@@ -1,0 +1,95 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+
+}
+
+.header a {
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+
+    position: relative;
+}
+
+.header a::after {
+    position: absolute;
+    content: "";
+    width: 10%;
+    height: 2px;
+    background-color: black;
+    left: 0;
+    bottom: -3px;
+
+    transition: all .3s ease-in-out;
+}
+
+.header a:hover::after {
+    width: 100%;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.greeting {
+    margin-top: 200px;
+    font-size: 60px;
+    color: black;
+    transition: all 1s ease;
+}
+
+.greeting:hover {
+    color: blueviolet;
+}
+
+.about, .contactMe {
+    text-align: center;
+    width: 50%;
+    margin: 200px auto;
+    font-size: 40px;
+    color: black;
+    transition: all 1s ease;
+}
+
+.about:hover, .contactMe:hover {
+    color: green;
+}
+
+.contactMe a {
+    transition: all 1s ease;
+    text-decoration: none;
+    color:rgb(11, 160, 113);
+}
+
+.contactMe:hover a {
+    color: rgb(181, 28, 181);
+}
+
+.contactMe a{
+    position: relative;
+}
+.contactMe a::after{
+    position: absolute;
+    content: "";
+    bottom: -5px;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    transition: width .5s ease-in-out;
+    transform-origin: center;
+    background-color: rgb(181, 28, 181);
+}
+
+.contactMe:hover a::after {
+    width: 100%;
+}
+
