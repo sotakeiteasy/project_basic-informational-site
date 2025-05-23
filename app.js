@@ -33,10 +33,9 @@
 // }).listen(8080, () => console.log("Server is running on - http://localhost:8080"));
 
 
-const express = require("express");
-const path = require("path");
 
-const app = express();
+
+// EXPRESS
 
 // app.get(["/", "/index.html"], (req, res) => {
 //     res.sendFile(path.join(__dirname, "pages", "index.html"))
@@ -58,16 +57,38 @@ const app = express();
 //     res.status(404).sendFile(path.join(__dirname, "pages", "404.html"))
 // })
 
-app.use(express.static(path.join(__dirname, "pages")));
-app.use(express.static(__dirname));
+// const express = require("express");
+// const path = require("path");
 
-app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, "pages", "404.html"))
-})
+// const app = express();
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "pages", "index.html"))
-})
+// app.use(express.static(path.join(__dirname, "pages")));
+// app.use(express.static(__dirname));
+
+// app.use((req, res) => {
+//     res.status(404).sendFile(path.join(__dirname, "pages", "404.html"))
+// })
+
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "pages", "index.html"))
+// })
+
+// const PORT = 8080;
+// app.listen(PORT, () => {
+//     console.log("Server is running on - http://localhost:8080")
+// })
+
+
+const express = require("express");
+const app = express();
+const authorRouter = require("./routes/authorRouter")
+const bookRouter = require("./routes/bookRouter")
+const indexRouter = require("./routes/indexRouter")
+
+app.use("/authors", authorRouter);
+app.use("/books", bookRouter);
+app.use("/", indexRouter);
+
 
 const PORT = 8080;
 app.listen(PORT, () => {
