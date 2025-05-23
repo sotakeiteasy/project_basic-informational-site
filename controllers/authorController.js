@@ -1,8 +1,8 @@
-const db = require("../db");
+const db = require("../models/db");
 const asyncHandler = require('express-async-handler');
 const CustomNotFoundError = require("../errors/customNotFoundError");
 
-const getAuthorById = asyncHandler(async (res, req) => {
+const getAuthorById = asyncHandler(async (req, res) => {
     const { authorId } = req.params;
 
     const author = await db.getAuthorById(Number(authorId));
@@ -11,12 +11,17 @@ const getAuthorById = asyncHandler(async (res, req) => {
         throw new CustomNotFoundError("Author not found")
     }
 
-    res.send(`Author Name: ${author.name}`);
+    res.render("author", {author: author, links: req.links, currentYear: req.currentYear})
 });
 
-app.use((err, req, res, next) => {
-    console.error(err);
-    res.status(err.statusCode || 500).send(err.message);
-})
+async function authors(req, res) {
+    const allAuthors = await db.getAllAuthors();
 
-module.exports = { getAuthorById };
+    if (!allAuthors) {
+        throw new CustomNotFoundError("Authors not found")
+    }
+
+    res.render("authors", {db: allAuthors, links: req.links, currentYear: req.currentYear})
+}
+
+module.exports = { getAuthorById, authors };

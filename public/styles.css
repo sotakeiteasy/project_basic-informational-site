@@ -1,5 +1,9 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    margin: 0;
 }
 
 .header {
@@ -8,6 +12,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 50px;
+    margin: 10px 0;
 
 }
 
@@ -35,9 +40,11 @@ body {
     width: 100%;
 }
 
-.main {
-    display: flex;
-    justify-content: center;
+main, .main {
+    display: flex; 
+    flex-direction: column;
+    flex: 1 1 auto;
+    align-items: center;
 }
 
 .greeting {
@@ -52,6 +59,7 @@ body {
 }
 
 .about, .contactMe {
+    flex: 1;
     text-align: center;
     width: 50%;
     margin: 200px auto;
@@ -91,5 +99,18 @@ body {
 
 .contactMe:hover a::after {
     width: 100%;
+}
+
+footer {
+    margin: 10px 0;
+    display: flex;
+    width: 100%;
+    justify-content: center ;
+
+    a {
+        font-size: 1.2rem;
+        margin: 0 30px;
+        color: black;
+    }
 }
 

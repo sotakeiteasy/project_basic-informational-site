@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles.css">
+        <title>Homepage</title>
+    </head>
+    <body>
+        <%- include('components/navbar', {links: links}) %>
+        <main class="main">
+            <div class="greeting">Hello, World!</div>
+        </main>
+        <%- include('components/footer', {currentYear: currentYear}) %>
+    </body>
+</html>

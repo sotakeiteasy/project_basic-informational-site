@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <%- include('components/navbar', {links: links}) %>
+        <main>
+            <ul style= "display: flex; flex-direction: column; justify-content: start; flex-wrap: wrap; 
+            max-width: 350px; max-height: 150px;
+            font-size: 1.2rem; margin: 100px 0;"
+            >
+                <% db.map(author=> { %>
+                    <li style="margin-left: 50px;">
+                       <a href="authors/ <%=author.id%>"><%= author.name %></a> 
+                    </li>
+                    <% }) %>
+            </ul>
+        </main>
+        <%- include('components/footer', {currentYear: currentYear}) %>
+</body>
+
+</html>
